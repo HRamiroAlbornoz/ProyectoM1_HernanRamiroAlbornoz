@@ -22,3 +22,20 @@ nav ul {
   gap: 1rem;
   list-style: none;
 }
+
+.transformarIdeas {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #6a1b9a;
+  color: white;
+}
+
+.generador {
+  padding: 2rem;
+  text-align: center;
+}
+
+.controles {
+  margin-bottom: 1rem;
+}
+
