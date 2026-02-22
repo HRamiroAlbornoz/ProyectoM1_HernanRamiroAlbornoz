@@ -48,6 +48,7 @@ nav a {
   margin-top: 2rem;
 }
 
+/* .color-box mustra cada color con su código encima, asegurando contraste con tex-shadow */
 .color-box {
   width: 120px;
   height: 120px;
