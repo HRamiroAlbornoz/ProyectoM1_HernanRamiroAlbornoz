@@ -82,10 +82,26 @@ function hslaToHex(h, s, l, a) {
   return rgbaToHex(f(0), f(8), f(4), a);
 }
 
+/*
 // Generar paleta
 function generarPaleta() {
   const size = parseInt(document.getElementById("size").value);
   const format = document.getElementById("format").value;
+  const paleta = document.getElementById("paleta");
+  paleta.innerHTML = "";
+*/
+
+function generarPaleta() {
+  const sizeValue = document.getElementById("size").value;
+  const formatValue = document.getElementById("format").value;
+
+  // Validación: si no se eligió tamaño o formato, salir sin hacer nada
+  if (!sizeValue || !formatValue) {
+    return;
+  }
+
+  const size = parseInt(sizeValue);
+  const format = formatValue;
   const paleta = document.getElementById("paleta");
   paleta.innerHTML = "";
 
