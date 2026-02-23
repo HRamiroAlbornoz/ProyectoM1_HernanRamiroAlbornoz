@@ -17,6 +17,14 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
+/* Tipografía adaptable */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+h2 {
+  font-size: clamp(1.25rem, 4vw, 2rem);
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -50,6 +58,18 @@ nav a {
 .generador {
   padding: 2rem;
   text-align: center;
+}
+
+button {
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: #6a1b9a;
+  color: #fff;
 }
 
 /* #paleta ahora usa grid layout en lugar de flexbox.
@@ -120,17 +140,47 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Menú hamburguesa en móviles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 /* Tablets (pantallas medianas) */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row; /* mantiene fila */
+    justify-content: flex-start; /* alinea contenido a la izquierda */
+    text-align: left;
   }
 
+  nav {
+    order: -1; /* coloca el nav después del logo */
+    margin-right: 1rem; /* espacio entre logo y menú */
+  }
+  
   nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none; /* ocultamos el menú en tablets, se mostrará con el botón hamburguesa */
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: absolute;
+  }
 
+  nav ul.active {
+    display: flex; /* mostramos el menú cuando se activa */
+  }
+
+  .menu-toggle {
+    display: block; /* mostramos el botón hamburguesa en tablets */
+    order: -2; /* coloca el botón antes del logo */
+    margin-right: 0.5rem; /* empuja el resto hacia la derecha */
   }
 
   .transformarIdeas {
@@ -138,9 +188,13 @@ footer {
     font-size: 1.25rem;
   }
 
+  /* Paleta más flexible */
   #paleta {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+    margin-top: 2rem;
+    padding: 1rem;
   }
 
   .color-box {
@@ -155,8 +209,16 @@ footer {
     align-items: center;
   }
 
+  .logo img {
+    height: 30px; /* logo más pequeño en móviles */
+  }
+
+  .logo span {
+    font-size: 1rem; /* texto más compacto */
+  }
+
   #paleta {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, 1fr);
     /* una columna en móviles */
   }
 
@@ -166,5 +228,40 @@ footer {
 
   .color-code {
     font-size: 0.75rem;
+  }
+}
+
+/* Espaciado dinámico */
+.generador {
+  padding: clamp(1rem, 4vw, 2rem);
+}
+footer {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Modo oscuro automático */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  header, footer {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+  nav ul {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+  nav a {
+    color: #e0e0e0;
+  }
+  .color-item {
+    background: #1e1e1e;
+    border-color: #333;
+  }
+  .color-code {
+    color: #e0e0e0;
   }
 }

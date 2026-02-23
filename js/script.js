@@ -59,6 +59,10 @@ function generarPaleta() {
 }
 */
 
+// -----------------------------
+// Conversión de colores a HEX
+// -----------------------------
+
 // Convertir RGBA a Hex de 8 dígitos (#RRGGBBAA)
 function rgbaToHex(r, g, b, a) {
   const toHex = x => {
@@ -91,6 +95,9 @@ function generarPaleta() {
   paleta.innerHTML = "";
 */
 
+// -----------------------------
+// Generador de paletas
+// -----------------------------
 function generarPaleta() {
   const sizeValue = document.getElementById("size").value;
   const formatValue = document.getElementById("format").value;
@@ -159,6 +166,25 @@ function generarPaleta() {
   setTimeout(() => toast.remove(), 2000);
 }
 
-// Eventos
+// -----------------------------
+// Menú hamburguesa
+// -----------------------------
+const menuToggle = document.querySelector(".menu-toggle");
+const navList = document.querySelector("nav ul");
+
+menuToggle.addEventListener("click", () => {
+  navList.classList.toggle("active");
+
+  // Cambiar el ícono según estado
+  if (navList.classList.contains("active")) {
+    menuToggle.innerHTML = "✖"; // ícono de cerrar
+  } else {
+    menuToggle.innerHTML = "☰"; // ícono hamburguesa
+  }
+});
+
+// -----------------------------
+// Eventos principales
+// -----------------------------
 document.getElementById("generar").addEventListener("click", generarPaleta);
 document.getElementById("explorar").addEventListener("click", generarPaleta);
