@@ -15,6 +15,7 @@ header {
   padding: 1rem;
   background: #fff;
   border-bottom: 1px solid #ddd;
+  position: relative; /* permite posicionar el menú respecto al header */
 }
 
 /* Tipografía adaptable */
@@ -157,9 +158,19 @@ footer {
     text-align: left;
   }
 
+  .menu-toggle {
+    display: block; /* mostramos el botón hamburguesa en tablets */
+    order: -2; /* coloca el botón antes del logo */
+    margin-right: 0.5rem; /* empuja el resto hacia la derecha */
+  }
+
   nav {
-    order: -1; /* coloca el nav después del logo */
+    order: -1; /* menú después del botón */
     margin-right: 1rem; /* espacio entre logo y menú */
+    position: absolute; /* botón se posiciona respecto al header */
+    top: 100%; /* aparece menú debajo del header */
+    left: 0; /* alineado a la izquierda */
+    width: 100%; /* ocupa todo el ancho */
   }
   
   nav ul {
@@ -171,16 +182,11 @@ footer {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: absolute;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
   nav ul.active {
     display: flex; /* mostramos el menú cuando se activa */
-  }
-
-  .menu-toggle {
-    display: block; /* mostramos el botón hamburguesa en tablets */
-    order: -2; /* coloca el botón antes del logo */
-    margin-right: 0.5rem; /* empuja el resto hacia la derecha */
   }
 
   .transformarIdeas {

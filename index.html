@@ -13,6 +13,7 @@
 
   <header>
     
+    <!-- Logo -->
     <div class="logo">
       <img src="img/logo.png" alt="Logo de Colofly Studio">
       <span>COLORFLY STUDIO</span>
@@ -20,6 +21,8 @@
     
     <!-- Botón hamburguesa visible en móviles -->
     <button class="menu-toggle">☰</button>
+    
+    <!-- Menú de navegación -->
     <nav>
       <ul>
         <li><a href="">Inicio</a></li>
@@ -43,15 +46,8 @@
     <section class="generador">
 
       <h2>Generador de Paletas</h2>
-      <div class="controles">
-
-        <label for="size">Tamaño:</label>
-        <select name="" id="size">
-          <option value="">Seleccionar...</option>
-          <option value="6">6 colores</option>
-          <option value="8">8 colores</option>
-          <option value="9">9 colores</option>
-        </select>
+      
+      <div class="controles">       
 
         <!--HSL con canal alpha-->
         <label for="format">Formato:</label>
@@ -59,6 +55,14 @@
           <option value="">Seleccionar...</option>
           <option value="hsla">HSL</option>
           <option value="rgba">RGBA</option>
+        </select>
+
+         <label for="size">Tamaño:</label>
+        <select name="" id="size">
+          <option value="">Seleccionar...</option>
+          <option value="6">6 colores</option>
+          <option value="8">8 colores</option>
+          <option value="9">9 colores</option>
         </select>
 
         <button id="generar">Generar Paleta</button>
