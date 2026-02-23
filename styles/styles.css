@@ -17,6 +17,17 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+.logo img {
+  height: 40px; /* ajusta el tamaño del logo*/
+  width: auto;
+}
+
 nav ul {
   display: flex;
   gap: 1rem;
