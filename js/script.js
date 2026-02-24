@@ -146,15 +146,52 @@ function generarPaleta() {
     hexCode.className = "color-code";
     hexCode.textContent = hex;
 
+    // Copiar el código del color (RGBA/HSLA)
+    code.addEventListener("click", () => {
+      copiarAlPortapapeles(code, color);
+    });
+
+    // Copiar el código HEX
+    hexCode.addEventListener("click", () => {
+      copiarAlPortapapeles(hexCode, hex);
+    });
+
     item.appendChild(box);
     item.appendChild(code);
     item.appendChild(hexCode);
     paleta.appendChild(item);
   }
 
-  // Microfeedback simple
+  mostrarToast("¡Paleta generada!");
+}
+
+// Mejorar microfeedback al copiar: cambiar el texto a "Copiado ✅" y aplicar una clase visual temporalmente
+// Función para copiar y dar feedback visual
+function copiarAlPortapapeles(elemento, texto) {
+  navigator.clipboard.writeText(texto).then(() => {
+
+    // Guardamos el texto original
+    const originalText = elemento.textContent;
+
+    // Cambiamos el contenido y aplicamos clase visual
+    elemento.textContent = "Copiado ✅";
+    elemento.classList.add("copiado");
+
+    // Restauramos después de 1.5 segundos
+    setTimeout(() => {
+      elemento.textContent = originalText;
+      elemento.classList.remove("copiado");
+    }, 1500);
+
+    // También mostramos un toast breve
+    mostrarToast(`Copiado: ${texto}`);
+  });
+};
+
+// Microfeedback simple
+function mostrarToast(mensaje) {
   const toast = document.createElement("div");
-  toast.textContent = "¡Paleta generada!";
+  toast.textContent = mensaje;
   toast.style.position = "fixed";
   toast.style.bottom = "10px";
   toast.style.right = "10px";
