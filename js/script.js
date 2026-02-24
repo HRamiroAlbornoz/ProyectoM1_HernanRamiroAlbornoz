@@ -181,6 +181,10 @@ function generarPaleta() {
       hexCode.className = "color-code";
       hexCode.textContent = hex;
 
+      // Al hacer clic en la caja, copia el HEX
+      box.addEventListener("click", () => {
+        copiarAlPortapapeles(hexCode, hex); });
+
       // Ícono de bloqueo
       const lock = document.createElement("div");
       lock.className = "lock-icon";
