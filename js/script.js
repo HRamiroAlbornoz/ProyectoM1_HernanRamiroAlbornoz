@@ -110,56 +110,93 @@ function generarPaleta() {
   const size = parseInt(sizeValue);
   const format = formatValue;
   const paleta = document.getElementById("paleta");
-  paleta.innerHTML = "";
+  //paleta.innerHTML = "";
+
+  // Si ya hay colores, revisamos cuáles están bloqueados
+  const itemsExistentes = paleta.querySelectorAll(".color-item");
 
   for (let i = 0; i < size; i++) {
-    let color, hex;
+    let item
 
-    if (format === "hsla") {
-      const h = Math.floor(Math.random() * 360);
-      const s = Math.floor(Math.random() * 100);
-      const l = Math.floor(Math.random() * 100);
-      const a = Math.random().toFixed(2);
-      color = `hsla(${h}, ${s}%, ${l}%, ${a})`;
-      hex = hslaToHex(h, s, l, parseFloat(a));
+    // Si existe y está bloqueado, lo dejamos igual
+    if (itemsExistentes[i] && itemsExistentes[i].querySelector(".lock-icon.locked")) {
+      item = itemsExistentes[i];
     } else {
-      const r = Math.floor(Math.random() * 256);
-      const g = Math.floor(Math.random() * 256);
-      const b = Math.floor(Math.random() * 256);
-      const a = Math.random().toFixed(2);
-      color = `rgba(${r}, ${g}, ${b}, ${a})`;
-      hex = rgbaToHex(r, g, b, parseFloat(a));
+
+      // Generamos un nuevo color    
+      let color, hex;
+
+      if (format === "hsla") {
+        const h = Math.floor(Math.random() * 360);
+        const s = Math.floor(Math.random() * 100);
+        const l = Math.floor(Math.random() * 100);
+        const a = Math.random().toFixed(2);
+        color = `hsla(${h}, ${s}%, ${l}%, ${a})`;
+        hex = hslaToHex(h, s, l, parseFloat(a));
+      } else {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        const a = Math.random().toFixed(2);
+        color = `rgba(${r}, ${g}, ${b}, ${a})`;
+        hex = rgbaToHex(r, g, b, parseFloat(a));
+      }
+
+      item = document.createElement("div");
+      item.className = "color-item";
+
+      const box = document.createElement("div");
+      box.className = "color-box";
+      box.style.background = color;
+
+      const code = document.createElement("div");
+      code.className = "color-code";
+      code.textContent = color;
+
+      const hexCode = document.createElement("div");
+      hexCode.className = "color-code";
+      hexCode.textContent = hex;
+
+      // Ícono de bloqueo
+      const lock = document.createElement("div");
+      lock.className = "lock-icon";
+      lock.textContent = "🔓";
+
+      lock.addEventListener("click", () => {
+        lock.classList.toggle("locked");
+        //lock.textContent = lock.classList.contains("locked") ? "🔒" : "🔓";
+        if (lock.classList.contains("locked")) {
+          lock.textContent = "🔒";
+          mostrarToast("Color bloqueado 🔒");
+        } else {
+          lock.textContent = "🔓";
+          mostrarToast("Color desbloqueado 🔓");
+        }
+      });
+
+      // Copiar el código del color (RGBA/HSLA)
+      code.addEventListener("click", () => {
+        copiarAlPortapapeles(code, color);
+      });
+
+      // Copiar el código HEX
+      hexCode.addEventListener("click", () => {
+        copiarAlPortapapeles(hexCode, hex);
+      });
+
+      item.appendChild(box);
+      item.appendChild(code);
+      item.appendChild(hexCode);
+      item.appendChild(lock);
+      //paleta.appendChild(item);
     }
 
-    const item = document.createElement("div");
-    item.className = "color-item";
-
-    const box = document.createElement("div");
-    box.className = "color-box";
-    box.style.background = color;
-
-    const code = document.createElement("div");
-    code.className = "color-code";
-    code.textContent = color;
-
-    const hexCode = document.createElement("div");
-    hexCode.className = "color-code";
-    hexCode.textContent = hex;
-
-    // Copiar el código del color (RGBA/HSLA)
-    code.addEventListener("click", () => {
-      copiarAlPortapapeles(code, color);
-    });
-
-    // Copiar el código HEX
-    hexCode.addEventListener("click", () => {
-      copiarAlPortapapeles(hexCode, hex);
-    });
-
-    item.appendChild(box);
-    item.appendChild(code);
-    item.appendChild(hexCode);
-    paleta.appendChild(item);
+    // Si es nuevo, lo agregamos; si estaba bloqueado, lo mantenemos
+    if (!itemsExistentes[i]) {
+      paleta.appendChild(item);
+    } else {
+      paleta.replaceChild(item, itemsExistentes[i]);
+    }
   }
 
   mostrarToast("¡Paleta generada!");

@@ -91,6 +91,19 @@ button:hover {
   padding: 1rem;
 }
 
+/* Estilos para el botón de bloqueo de colores */
+.lock-icon {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.lock-icon.locked {
+  color: #6a1b9a; /* púrpura cuando está bloqueado */
+}
+
 /* Se creó .color-item para agrupar cada caja y su código debajo */
 .color-item {
   display: flex;
