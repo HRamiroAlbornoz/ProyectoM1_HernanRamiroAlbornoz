@@ -137,7 +137,7 @@ button:hover {
 /* .color-code muestra el texto del color */
 .color-code {
   margin-top: 0.5rem;
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
   color: #333;
   text-align: center;
   overflow-wrap: break-word;
@@ -160,6 +160,24 @@ button:hover {
 .controles {
   margin-bottom: 1.5rem;
 }
+
+.paletasGuardadas h3 {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(1rem, 2.5vw, 1.25rem); /* tamaño dinámico */
+  color: #6a1b9a;
+}
+
+/* Contenedores de paletas guardadas */
+#lista-paletas-hsla, #lista-paletas-rgba {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
 
 footer {
   text-align: center;
@@ -233,6 +251,17 @@ footer {
   .color-box {
     height: 80px;
   }
+
+  .paletasGuardadas h3 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-top: 0.75rem;
+  }
+
+  #lista-paletas-hsla, #lista-paletas-rgba {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+
 }
 
 /* Móviles (pantallas pequeñas) */
@@ -261,6 +290,15 @@ footer {
 
   .color-code {
     font-size: 0.75rem;
+  }
+
+  .paletasGuardadas h3 {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-top: 0.5rem;
+  }
+
+  #lista-paletas-hsla, #lista-paletas-rgba {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -297,4 +335,5 @@ footer {
   .color-code {
     color: #e0e0e0;
   }
+
 }

@@ -96,6 +96,28 @@ function generarPaleta() {
 */
 
 // -----------------------------
+// Conversión de colores a HEX
+// -----------------------------
+function rgbaToHex(r, g, b, a) {
+  const toHex = x => {
+    const hex = x.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  };
+  const alpha = Math.round(a * 255);
+  return "#" + toHex(r) + toHex(g) + toHex(b) + toHex(alpha);
+}
+
+function hslaToHex(h, s, l, a) {
+  s /= 100;
+  l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const b = s * Math.min(l, 1 - l);
+  const f = n =>
+    Math.round(255 * (l - b * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))));
+  return rgbaToHex(f(0), f(8), f(4), a);
+}
+
+// -----------------------------
 // Generador de paletas
 // -----------------------------
 function generarPaleta() {
@@ -114,6 +136,8 @@ function generarPaleta() {
 
   // Si ya hay colores, revisamos cuáles están bloqueados
   const itemsExistentes = paleta.querySelectorAll(".color-item");
+
+  let coloresGenerados = [];
 
   for (let i = 0; i < size; i++) {
     let item
@@ -189,6 +213,7 @@ function generarPaleta() {
       item.appendChild(hexCode);
       item.appendChild(lock);
       //paleta.appendChild(item);
+      coloresGenerados.push(color);
     }
 
     // Si es nuevo, lo agregamos; si estaba bloqueado, lo mantenemos
@@ -199,8 +224,42 @@ function generarPaleta() {
     }
   }
 
+  // Guardar en localStorage la última paleta según formato
+  localStorage.setItem(`ultimaPaleta_${format}`, JSON.stringify(coloresGenerados));
+
+  // Mostrar la paleta guardada
+  mostrarPaletaGuardada(format);
+
   mostrarToast("¡Paleta generada!");
 }
+
+// -----------------------------
+// Mostrar paleta guardada
+// -----------------------------
+function mostrarPaletaGuardada(format) {
+  const contenedor = document.getElementById(`lista-paletas-${format}`);
+  contenedor.innerHTML = `<h3>Última Paleta ${format.toUpperCase()}</h3>`;
+
+  const colores = JSON.parse(localStorage.getItem(`ultimaPaleta_${format}`)) || [];
+
+  colores.forEach(color => {
+    const item = document.createElement("div");
+    item.className = "color-item";
+
+    const box = document.createElement("div");
+    box.className = "color-box";
+    box.style.background = color;
+
+    const code = document.createElement("div");
+    code.className = "color-code";
+    code.textContent = color;
+
+    item.appendChild(box);
+    item.appendChild(code);
+    contenedor.appendChild(item);
+  });
+}
+
 
 // Mejorar microfeedback al copiar: cambiar el texto a "Copiado ✅" y aplicar una clase visual temporalmente
 // Función para copiar y dar feedback visual
@@ -262,3 +321,9 @@ menuToggle.addEventListener("click", () => {
 // -----------------------------
 document.getElementById("generar").addEventListener("click", generarPaleta);
 document.getElementById("explorar").addEventListener("click", generarPaleta);
+
+// Al cargar la página, mostrar paletas guardadas si existen
+window.addEventListener("DOMContentLoaded", () => {
+  mostrarPaletaGuardada("hsla");
+  mostrarPaletaGuardada("rgba");
+});
