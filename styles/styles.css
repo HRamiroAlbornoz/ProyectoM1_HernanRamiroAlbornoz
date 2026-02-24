@@ -109,7 +109,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -329,7 +329,7 @@ footer {
     color: #e0e0e0;
   }
   .color-item {
-    background: #1e1e1e;
+    background: linear-gradient(135deg, #3b4144, #859094, #373e41);
     border-color: #333;
   }
   .color-code {
