@@ -13,7 +13,7 @@ Colorfly Studio es una aplicación web que permite generar paletas de colores al
 - Generación de paletas en **HSL** y **RGBA**.
 - Conversión automática de colores a **HEX de 8 dígitos**.
 - **Bloqueo de colores** para mantener tonos específicos al regenerar la paleta.
-- **Copiado rápido** de códigos de color (HSLA/RGBA y HEX) al portapapeles.
+- **Copiado rápido** de códigos de color (HSL/RGBA y HEX) al portapapeles.
 - **Microfeedback visual** al copiar (texto temporal y toast).
 - **Paletas guardadas** en `localStorage` para recordar la última generada.
 - **Diseño responsive** con **CSS Grid**, **Flexbox** y media queries.
@@ -54,7 +54,7 @@ Colorfly-Studio/
   - Media queries para tablets y móviles.
   - `prefers-color-scheme` para modo oscuro automático.
 - **JavaScript ES6+**:
-  - Generación aleatoria de colores en HSLA y RGBA.
+  - Generación aleatoria de colores en HSL y RGBA.
   - Conversión a HEX de 8 dígitos (#RRGGBBAA).
   - Uso de `localStorage` para guardar la última paleta.
   - `clipboard API` para copiar códigos.
@@ -84,7 +84,7 @@ Nota: No se requieren dependencias ni servidor adicional, ya que es una aplicaci
 3. Haz clic en **Generar Paleta**.
 4. Interactúa con los colores:
    - 🔒 Bloquea un color para mantenerlo en la siguiente generación.
-   - 📋 Copia el código HSLA/RGBA o HEX haciendo clic en el texto o la caja.
+   - 📋 Copia el código HSL/RGBA o HEX haciendo clic en el texto o la caja.
 5. Consulta las **últimas paletas guardadas** en la sección correspondiente.
 
 ---
@@ -95,7 +95,7 @@ Nota: No se requieren dependencias ni servidor adicional, ya que es una aplicaci
 3. 	En **Source**, selecciona la rama principal (`main` o `master`) y la carpeta raíz (`/root`).
 4. 	Guarda los cambios.
 5. 	GitHub generará automáticamente la URL pública de tu aplicación, por ejemplo:
-    https://tuusuario.github.io/Colorfly-Studio
+    `https://tuusuario.github.io/Colorfly-Studio`
 
 ---
 
@@ -113,5 +113,5 @@ Este proyecto está bajo la licencia MIT. Puedes usarlo, modificarlo y distribui
 
 ## ✨ Autor
 
-Desarrollado por **Ramiro**.  
+Desarrollado por **Hernán**.  
 Apasionado por el diseño web, la interacción y la creación de herramientas visuales simples y mantenibles.
