@@ -15,13 +15,15 @@ header {
   padding: 1rem;
   background: #fff;
   border-bottom: 1px solid #ddd;
-  position: relative; /* permite posicionar el menú respecto al header */
+  position: relative;
+  /* permite posicionar el menú respecto al header */
 }
 
 /* Tipografía adaptable */
 h1 {
   font-size: clamp(1.5rem, 5vw, 3rem);
 }
+
 h2 {
   font-size: clamp(1.25rem, 4vw, 2rem);
 }
@@ -32,8 +34,10 @@ h2 {
   gap: 0.5rem;
   font-weight: bold;
 }
+
 .logo img {
-  height: 40px; /* ajusta el tamaño del logo*/
+  height: 40px;
+  /* ajusta el tamaño del logo*/
   width: auto;
 }
 
@@ -68,6 +72,7 @@ button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 button:hover {
   background: #6a1b9a;
   color: #fff;
@@ -101,7 +106,8 @@ button:hover {
 }
 
 .lock-icon.locked {
-  color: #6a1b9a; /* púrpura cuando está bloqueado */
+  color: #6a1b9a;
+  /* púrpura cuando está bloqueado */
 }
 
 /* Se creó .color-item para agrupar cada caja y su código debajo */
@@ -141,7 +147,8 @@ button:hover {
   color: #333;
   text-align: center;
   overflow-wrap: break-word;
-  cursor: pointer; /* indica que se puede hacer clic en el código del color */
+  cursor: pointer;
+  /* indica que se puede hacer clic en el código del color */
   transition: color 0.3s ease;
 }
 
@@ -153,7 +160,8 @@ button:hover {
 
 /* Estado visual cuando se copia el código hexadecimal */
 .color-code.copiado {
-  color: #6a1b9a; /* cambia a púrpura */
+  color: #6a1b9a;
+  /* cambia a púrpura */
   font-weight: bold;
 }
 
@@ -165,12 +173,14 @@ button:hover {
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
-  font-size: clamp(1rem, 2.5vw, 1.25rem); /* tamaño dinámico */
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  /* tamaño dinámico */
   color: #6a1b9a;
 }
 
 /* Contenedores de paletas guardadas */
-#lista-paletas-hsla, #lista-paletas-rgba {
+#lista-paletas-hsla,
+#lista-paletas-rgba {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
@@ -198,40 +208,53 @@ footer {
 /* Tablets (pantallas medianas) */
 @media (max-width: 768px) {
   header {
-    flex-direction: row; /* mantiene fila */
-    justify-content: flex-start; /* alinea contenido a la izquierda */
+    flex-direction: row;
+    /* mantiene fila */
+    justify-content: flex-start;
+    /* alinea contenido a la izquierda */
     text-align: left;
   }
 
   .menu-toggle {
-    display: block; /* mostramos el botón hamburguesa en tablets */
-    order: -2; /* coloca el botón antes del logo */
-    margin-right: 0.5rem; /* empuja el resto hacia la derecha */
+    display: block;
+    /* mostramos el botón hamburguesa en tablets */
+    order: -2;
+    /* coloca el botón antes del logo */
+    margin-right: 0.5rem;
+    /* empuja el resto hacia la derecha */
   }
 
   nav {
-    order: -1; /* menú después del botón */
-    margin-right: 1rem; /* espacio entre logo y menú */
-    position: absolute; /* botón se posiciona respecto al header */
-    top: 100%; /* aparece menú debajo del header */
-    left: 0; /* alineado a la izquierda */
-    width: 100%; /* ocupa todo el ancho */
+    order: -1;
+    /* menú después del botón */
+    margin-right: 1rem;
+    /* espacio entre logo y menú */
+    position: absolute;
+    /* botón se posiciona respecto al header */
+    top: 100%;
+    /* aparece menú debajo del header */
+    left: 0;
+    /* alineado a la izquierda */
+    width: 100%;
+    /* ocupa todo el ancho */
   }
-  
+
   nav ul {
-    display: none; /* ocultamos el menú en tablets, se mostrará con el botón hamburguesa */
+    display: none;
+    /* ocultamos el menú en tablets, se mostrará con el botón hamburguesa */
     flex-direction: column;
     gap: 0.75rem;
     background: #fff;
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: absolute;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   nav ul.active {
-    display: flex; /* mostramos el menú cuando se activa */
+    display: flex;
+    /* mostramos el menú cuando se activa */
   }
 
   .transformarIdeas {
@@ -257,7 +280,8 @@ footer {
     margin-top: 0.75rem;
   }
 
-  #lista-paletas-hsla, #lista-paletas-rgba {
+  #lista-paletas-hsla,
+  #lista-paletas-rgba {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: clamp(1rem, 3vw, 1.5rem);
   }
@@ -272,11 +296,13 @@ footer {
   }
 
   .logo img {
-    height: 30px; /* logo más pequeño en móviles */
+    height: 30px;
+    /* logo más pequeño en móviles */
   }
 
   .logo span {
-    font-size: 1rem; /* texto más compacto */
+    font-size: 1rem;
+    /* texto más compacto */
   }
 
   #paleta {
@@ -297,7 +323,8 @@ footer {
     margin-top: 0.5rem;
   }
 
-  #lista-paletas-hsla, #lista-paletas-rgba {
+  #lista-paletas-hsla,
+  #lista-paletas-rgba {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -306,6 +333,7 @@ footer {
 .generador {
   padding: clamp(1rem, 4vw, 2rem);
 }
+
 footer {
   font-size: clamp(0.75rem, 2vw, 0.9rem);
   padding: clamp(0.5rem, 2vw, 1rem);
@@ -317,21 +345,27 @@ footer {
     background-color: #121212;
     color: #e0e0e0;
   }
-  header, footer {
+
+  header,
+  footer {
     background: #1e1e1e;
     border-color: #333;
   }
+
   nav ul {
     background: #1e1e1e;
     border-color: #333;
   }
+
   nav a {
     color: #e0e0e0;
   }
+
   .color-item {
     background: linear-gradient(135deg, #3b4144, #859094, #373e41);
     border-color: #333;
   }
+
   .color-code {
     color: #e0e0e0;
   }
